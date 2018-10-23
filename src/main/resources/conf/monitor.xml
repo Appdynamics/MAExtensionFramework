@@ -1,0 +1,23 @@
+<monitor>
+    <name>MAExtensionFramework</name>
+    <type>managed</type>
+    <description>MAExtension Framework</description>
+    <monitor-configuration></monitor-configuration>
+    <enabled>true</enabled>
+    <monitor-run-task>
+        <execution-style>periodic</execution-style>
+        <execution-frequency-in-seconds>60</execution-frequency-in-seconds>
+        <name>MAExtension Framework Run Task</name>
+        <display-name>MAExtension Framework Task</display-name>
+        <description>MAExtension Framework Task</description>
+        <type>java</type>
+        <execution-timeout-in-secs>60</execution-timeout-in-secs>
+        <task-arguments>
+            <argument name="config-file" is-required="true" default-value="monitors/MAExtensionFramework/config.json"/>
+        </task-arguments>
+        <java-task>
+            <classpath>MAExtensionFramework.jar</classpath>
+            <impl-class>com.appdynamics.Monitor</impl-class>
+        </java-task>
+    </monitor-run-task>
+</monitor>
