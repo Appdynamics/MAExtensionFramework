@@ -13,7 +13,7 @@ When configuring a Machine Agent Extension, there are only 2 variables to worry 
 2. The integer values we would like to push.
 
 To achieve this, we will define a config.json file of the following format.
-```json
+```
 [    
     {
         "metricPath"        : String,
@@ -36,6 +36,7 @@ The return value of this method will automatically be picked up and pushed to th
 ### Assumptions
 ---
 The Controller has various qualifiers for how it processes metrics with regard to aggregation, time rollup, and tier rollup. For the sake of simplicity this extension makes several assumptions about desired default behavior.
+
 | Roll up Strategy | Description |
 | ------ | ------ |
 | METRIC_AGGREGATION_TYPE_AVERAGE | Default. Average of all reported values in that minute. |
