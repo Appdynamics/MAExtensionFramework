@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.BasicConfigurator;
-import com.singularity.ee.agent.systemagent.api.exception.TaskExecutionException;
 
 /**
  * Target this class for testing purposes only. When deployed to a Machine Agent this class will not be used at all.

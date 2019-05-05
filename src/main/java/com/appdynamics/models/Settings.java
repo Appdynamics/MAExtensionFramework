@@ -1,6 +1,5 @@
 package com.appdynamics.models;
 
-import com.singularity.ee.agent.systemagent.api.MetricWriter;
 import lombok.*;
 
 import java.util.List;
