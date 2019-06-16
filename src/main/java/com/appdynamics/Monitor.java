@@ -2,20 +2,20 @@ package com.appdynamics;
 
 import com.appdynamics.aggregators.IMetricAggregator;
 import com.appdynamics.models.Settings;
-
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-
 import com.google.gson.Gson;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
 import com.singularity.ee.agent.systemagent.api.AManagedMonitor;
 import com.singularity.ee.agent.systemagent.api.MetricWriter;
 import com.singularity.ee.agent.systemagent.api.TaskExecutionContext;
 import com.singularity.ee.agent.systemagent.api.TaskOutput;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 public class Monitor extends AManagedMonitor {
 
@@ -45,8 +45,8 @@ public class Monitor extends AManagedMonitor {
 					try {
 						Class<?> clazz = Class.forName(collector.getAggregatorClass());
 						IMetricAggregator metricAggregator = (IMetricAggregator) clazz.newInstance();
-						List<Object> list = collector.getArgs();
-						int metricVal = metricAggregator.computeMetric(list);
+                        List<Object> args = collector.getArgs();
+                        int metricVal = metricAggregator.computeMetric(args);
 						if (!StringUtils.isBlank(collector.getMetricPath())) {
 							MetricWriter metricWriter = this.getMetricWriter(collector.getMetricPath(),
 									settings.getMetricProcessingQualifiers().getMetricAggregationType(),
@@ -68,7 +68,7 @@ public class Monitor extends AManagedMonitor {
 		} catch (FileNotFoundException e) {
 			logger.error("Could not find config file with name.");
 		}
-		System.out.println("Metric Upload Complete. " + successfullyPrintedMetrics + " successful, " + (metricCount - successfullyPrintedMetrics) + " unsuccessful");
+        logger.info("Metric Upload Complete. " + successfullyPrintedMetrics + " successful, " + (metricCount - successfullyPrintedMetrics) + " unsuccessful");
 		return new TaskOutput("Metric Upload Complete. " + successfullyPrintedMetrics + " successful, " + (metricCount - successfullyPrintedMetrics) + " unsuccessful");
 	}
 }

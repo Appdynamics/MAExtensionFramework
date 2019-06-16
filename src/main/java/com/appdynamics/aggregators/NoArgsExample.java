@@ -1,13 +1,12 @@
 package com.appdynamics.aggregators;
 
-import com.appdynamics.Monitor;
 import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class NoArgsExample implements IMetricAggregator {
 
-	private static final Logger logger = Logger.getLogger(Monitor.class);
+    private static final Logger logger = Logger.getLogger(NoArgsExample.class);
 
 	public int computeMetric(List<Object> argsOpt) {
 

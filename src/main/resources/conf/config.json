@@ -6,26 +6,6 @@
   },
   "collectors": [
     {
-      "metricPath": "Custom Metrics|NumUsers",
-      "aggregatorClass": "com.appdynamics.aggregators.SimpleQueryDB",
-      "args": [
-        "jdbc:mysql://localhost:3388/controller?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false",
-        "root",
-        "admin",
-        "select count(*) from user;"
-      ]
-    },
-    {
-      "metricPath": "Custom Metrics|ConnectedMachines",
-      "aggregatorClass": "com.appdynamics.aggregators.SimpleQueryDB",
-      "args": [
-        "jdbc:mysql://localhost:3388/controller?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true&useSSL=false",
-        "root",
-        "admin",
-        "select count(*) from machine_instance;"
-      ]
-    },
-    {
       "metricPath": "Custom Metrics|NumDashboards",
       "aggregatorClass": "com.appdynamics.aggregators.SimpleQueryDB",
       "args": [

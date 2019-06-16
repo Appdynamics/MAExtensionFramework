@@ -33,15 +33,10 @@ public int computeMetric(List<String> args);
 ```
 The return value of this method will automatically be picked up and pushed to the controller according to the metricPath specified in config.json. 
 
-### Assumptions
----
-The Controller has various qualifiers for how it processes metrics with regard to aggregation, time rollup, and tier rollup. For the sake of simplicity this extension makes several assumptions about desired default behavior.
 
-| Roll up Strategy | Description |
-| ------ | ------ |
-| METRIC_AGGREGATION_TYPE_AVERAGE | Default. Average of all reported values in that minute. |
-| METRIC_TIME_ROLLUP_TYPE_AVERAGE | Average of all one-minute data points when adding it to the 10-minute or 60-minute granularity table. |
-| METRIC_CLUSTER_ROLLUP_TYPE_INDIVIDUAL | Aggregates the metric value by averaging the metric values across each node in the tier. |
+The Controller has various qualifiers for how it processes metrics with regard to aggregation, time rollup, and tier rollup.
+These configurations can be specified in the config.json in the JsonObjewct metricProcessingQualifiers.
+
 ---
 ### Downloading, Building, and Deploying to Machine Agent
 ---
